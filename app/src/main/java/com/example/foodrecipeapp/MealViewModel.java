@@ -49,15 +49,4 @@ public class MealViewModel extends ViewModel {
        });
     }
 
-    public void getCategoryModel() {
-        ArrayList<CategoryModel> categoryModels = new ArrayList<>();
-        categoryModels.add(new CategoryModel("Breakfast"));
-        categoryModels.add(new CategoryModel("Barbeque"));
-        categoryModels.add(new CategoryModel("Brunch"));
-        categoryModels.add(new CategoryModel("Chicken"));
-        categoryModels.add(new CategoryModel("Beef"));
-        categoryModels.add(new CategoryModel("Dinner"));
-        categoryModels.add(new CategoryModel("Italian"));
-        categoryModels.add(new CategoryModel("Wine"));
-    }
 }

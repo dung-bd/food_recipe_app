@@ -1,6 +1,9 @@
 package com.example.foodrecipeapp;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +18,12 @@ import androidx.lifecycle.ViewModelProviders;
 import com.example.foodrecipeapp.databinding.ActivityRecipeBinding;
 import com.example.foodrecipeapp.model.RecipesModel;
 import com.example.foodrecipeapp.response.RecipeResponse;
+
+import java.io.IOException;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 
 public class RecipeActivity extends AppCompatActivity {
@@ -49,6 +58,8 @@ public class RecipeActivity extends AppCompatActivity {
 
     private void setRecipeProperties(RecipeResponse recipeResponse){
         if(recipeResponse != null){
+
+            new GetImage().execute("https://th.bing.com/th/id/OIP.vuilg-c2-qCl3xdfn8nR_QHaEK?pid=ImgDet&rs=1");
             binding.recipeImage.setClipToOutline(true);
             binding.recipeTitleTV.setText(recipeResponse.getRecipe().getTitle());
             binding.publisherTV.setText(recipeResponse.getRecipe().getPublisher());
@@ -84,6 +95,38 @@ public class RecipeActivity extends AppCompatActivity {
             binding.ingredientsContainer.addView(textView);
         }
 
+    }
+
+    class GetImage extends AsyncTask<String, Void, byte[]>{
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .build();
+
+        @Override
+        protected byte[] doInBackground(String... strings) {
+
+            Request.Builder builder = new Request.Builder();
+            builder.url(strings[0]);
+
+            Request request = builder.build();
+
+            try {
+                Response response = okHttpClient.newCall(request).execute();
+                return response.body().bytes();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(byte[] bytes) {
+            if(bytes.length > 0){
+                Bitmap bitmap = BitmapFactory.decodeByteArray(bytes,0, bytes.length );
+                binding.recipeImage.setImageBitmap(bitmap);
+            }
+            super.onPostExecute(bytes);
+        }
     }
 
 }

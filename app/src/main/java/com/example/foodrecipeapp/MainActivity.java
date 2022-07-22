@@ -105,7 +105,6 @@ public class MainActivity extends AppCompatActivity implements CategoryAdapter.O
         startActivity(intent);
     }
 
-    // initialize search view
     private void initSearchView(){
         binding.searchView.setIconifiedByDefault(false);
         binding.searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
