@@ -12,7 +12,7 @@ public interface RecipeApi {
     @GET("api/search")
     public Call<RecipeSearchResponse> searchRecipe(
             @Query("q") String query,
-            @Query("page")int page);
+            @Query("page") int page);
 
     // GET RECIPE REQUEST
     @GET("api/get")

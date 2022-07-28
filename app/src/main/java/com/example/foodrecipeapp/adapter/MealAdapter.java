@@ -1,4 +1,4 @@
-package com.example.foodrecipeapp;
+package com.example.foodrecipeapp.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,7 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
+import com.example.foodrecipeapp.R;
 import com.example.foodrecipeapp.model.RecipesModel;
 
 import java.util.ArrayList;
@@ -23,16 +23,16 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.MealViewHolder
     private OnMealListener onMealListener;
 
 
-    public void setData(List<RecipesModel> recipesModels, Context mContext,OnMealListener onMealListener) {
+    public void setData(List<RecipesModel> recipesModels, Context mContext, OnMealListener onMealListener) {
         this.recipesModels = recipesModels;
         this.mContext = mContext;
-        this.onMealListener=onMealListener;
+        this.onMealListener = onMealListener;
         notifyDataSetChanged();
     }
 
-    public RecipesModel getSelectedRecipe(int position){
-        if(recipesModels != null){
-            if(recipesModels.size() > 0){
+    public RecipesModel getSelectedRecipe(int position) {
+        if (recipesModels != null) {
+            if (recipesModels.size() > 0) {
                 return recipesModels.get(position);
             }
         }
@@ -42,7 +42,7 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.MealViewHolder
     @NonNull
     @Override
     public MealViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new MealViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.meal_item, parent, false),onMealListener);
+        return new MealViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.meal_item, parent, false), onMealListener);
     }
 
     @Override
@@ -70,14 +70,14 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.MealViewHolder
         RatingBar mealRating;
         OnMealListener onMealListener;
 
-        public MealViewHolder(@NonNull View itemView,OnMealListener onMealListener) {
+        public MealViewHolder(@NonNull View itemView, OnMealListener onMealListener) {
             super(itemView);
             mealImage = itemView.findViewById(R.id.meal_image);
             mealTitle = itemView.findViewById(R.id.meal_titleTV);
             publisherName = itemView.findViewById(R.id.publisher_nameTV);
             mealRating = itemView.findViewById(R.id.meal_rating);
 
-            this.onMealListener=onMealListener;
+            this.onMealListener = onMealListener;
             itemView.setOnClickListener(this);
         }
 
@@ -86,7 +86,8 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.MealViewHolder
             onMealListener.onMealClick(getAdapterPosition());
         }
     }
-    public interface OnMealListener{
+
+    public interface OnMealListener {
         void onMealClick(int position);
     }
 }

@@ -8,11 +8,12 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.foodrecipeapp.databinding.ActivitySplashScreenBinding;
 
 public class SplashScreen extends AppCompatActivity {
 
-    private static int SPLASH_SCREEN=2500;
+    private static int SPLASH_SCREEN = 2500;
     private ActivitySplashScreenBinding activitySplashScreenBinding;
 
     Animation topAnim, bottomAnim;
@@ -30,7 +31,6 @@ public class SplashScreen extends AppCompatActivity {
         bottomAnim = AnimationUtils.loadAnimation(this, R.anim.bottom_animation);
 
 
-
         //set animation to view
         activitySplashScreenBinding.foodLogo.setAnimation(topAnim);
         activitySplashScreenBinding.appNameTV.setAnimation(bottomAnim);
@@ -38,10 +38,10 @@ public class SplashScreen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent=new Intent(SplashScreen.this, MainActivity.class);
+                Intent intent = new Intent(SplashScreen.this, MainActivity.class);
                 startActivity(intent);
                 finish();
             }
-        },SPLASH_SCREEN);
+        }, SPLASH_SCREEN);
     }
 }

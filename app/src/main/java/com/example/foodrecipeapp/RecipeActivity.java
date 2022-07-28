@@ -5,7 +5,6 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -18,6 +17,7 @@ import androidx.lifecycle.ViewModelProviders;
 import com.example.foodrecipeapp.databinding.ActivityRecipeBinding;
 import com.example.foodrecipeapp.model.RecipesModel;
 import com.example.foodrecipeapp.response.RecipeResponse;
+import com.example.foodrecipeapp.viewmodel.MealViewModel;
 
 import java.io.IOException;
 
@@ -27,7 +27,7 @@ import okhttp3.Response;
 
 
 public class RecipeActivity extends AppCompatActivity {
-    private  ActivityRecipeBinding binding;
+    private ActivityRecipeBinding binding;
     private String recipeID;
 
     @Override
@@ -56,8 +56,8 @@ public class RecipeActivity extends AppCompatActivity {
 
     }
 
-    private void setRecipeProperties(RecipeResponse recipeResponse){
-        if(recipeResponse != null){
+    private void setRecipeProperties(RecipeResponse recipeResponse) {
+        if (recipeResponse != null) {
 
             new GetImage().execute("https://th.bing.com/th/id/OIP.vuilg-c2-qCl3xdfn8nR_QHaEK?pid=ImgDet&rs=1");
             binding.recipeImage.setClipToOutline(true);
@@ -71,9 +71,9 @@ public class RecipeActivity extends AppCompatActivity {
         }
     }
 
-    private void getIngredients(RecipeResponse recipeResponse){
-        if(recipeResponse.getRecipe().getIngredients() != null){
-            for(String ingredient : recipeResponse.getRecipe().getIngredients()){
+    private void getIngredients(RecipeResponse recipeResponse) {
+        if (recipeResponse.getRecipe().getIngredients() != null) {
+            for (String ingredient : recipeResponse.getRecipe().getIngredients()) {
                 TextView textView = new TextView(RecipeActivity.this);
                 textView.setText(ingredient);
                 textView.setTextSize(17);
@@ -84,7 +84,7 @@ public class RecipeActivity extends AppCompatActivity {
                                 ViewGroup.LayoutParams.WRAP_CONTENT));
                 binding.ingredientsContainer.addView(textView);
             }
-        } else{
+        } else {
             TextView textView = new TextView(this);
             textView.setText("Error retrieving ingredients.\nCheck network connection.");
             textView.setTextSize(17);
@@ -97,7 +97,7 @@ public class RecipeActivity extends AppCompatActivity {
 
     }
 
-    class GetImage extends AsyncTask<String, Void, byte[]>{
+    class GetImage extends AsyncTask<String, Void, byte[]> {
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .build();
 
@@ -121,8 +121,8 @@ public class RecipeActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(byte[] bytes) {
-            if(bytes.length > 0){
-                Bitmap bitmap = BitmapFactory.decodeByteArray(bytes,0, bytes.length );
+            if (bytes.length > 0) {
+                Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
                 binding.recipeImage.setImageBitmap(bitmap);
             }
             super.onPostExecute(bytes);

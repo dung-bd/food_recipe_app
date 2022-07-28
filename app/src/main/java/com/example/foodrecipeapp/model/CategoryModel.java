@@ -7,11 +7,12 @@ public class CategoryModel {
         this.categoryName = categoryName;
     }
 
-    public String getCategoryName(){
-         return categoryName;
-     }
-     private void setCategoryName(String categoryName){
-         this.categoryName = categoryName;
-     }
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    private void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
 
 }
