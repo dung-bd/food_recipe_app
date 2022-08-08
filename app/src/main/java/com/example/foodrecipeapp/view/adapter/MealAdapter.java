@@ -1,4 +1,4 @@
-package com.example.foodrecipeapp.adapter;
+package com.example.foodrecipeapp.view.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -23,9 +23,8 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.MealViewHolder
     private OnMealListener onMealListener;
 
 
-    public void setData(List<RecipesModel> recipesModels, Context mContext, OnMealListener onMealListener) {
+    public void setData(List<RecipesModel> recipesModels, OnMealListener onMealListener) {
         this.recipesModels = recipesModels;
-        this.mContext = mContext;
         this.onMealListener = onMealListener;
         notifyDataSetChanged();
     }

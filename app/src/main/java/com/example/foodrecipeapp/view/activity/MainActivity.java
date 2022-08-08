@@ -1,4 +1,4 @@
-package com.example.foodrecipeapp;
+package com.example.foodrecipeapp.view.activity;
 
 import android.Manifest;
 import android.content.Intent;
@@ -17,8 +17,8 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.foodrecipeapp.adapter.CategoryAdapter;
-import com.example.foodrecipeapp.adapter.MealAdapter;
+import com.example.foodrecipeapp.view.adapter.CategoryAdapter;
+import com.example.foodrecipeapp.view.adapter.MealAdapter;
 import com.example.foodrecipeapp.databinding.ActivityMainBinding;
 import com.example.foodrecipeapp.model.CategoryModel;
 import com.example.foodrecipeapp.response.RecipeSearchResponse;
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements CategoryAdapter.O
         mealViewModel.mutableLiveData.observe(this, new Observer<RecipeSearchResponse>() {
             @Override
             public void onChanged(RecipeSearchResponse recipeSearchResponse) {
-                mealAdapter.setData(recipeSearchResponse.getRecipes(), MainActivity.this, MainActivity.this);
+                mealAdapter.setData(recipeSearchResponse.getRecipes(), MainActivity.this);
             }
         });
     }

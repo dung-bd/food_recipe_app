@@ -1,4 +1,4 @@
-package com.example.foodrecipeapp;
+package com.example.foodrecipeapp.view.activity;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

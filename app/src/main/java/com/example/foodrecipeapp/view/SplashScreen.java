@@ -1,4 +1,4 @@
-package com.example.foodrecipeapp;
+package com.example.foodrecipeapp.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,14 +9,15 @@ import android.view.animation.AnimationUtils;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.foodrecipeapp.R;
+import com.example.foodrecipeapp.view.activity.MainActivity;
 import com.example.foodrecipeapp.databinding.ActivitySplashScreenBinding;
 
 public class SplashScreen extends AppCompatActivity {
 
     private static int SPLASH_SCREEN = 2500;
     private ActivitySplashScreenBinding activitySplashScreenBinding;
-
-    Animation topAnim, bottomAnim;
+    private Animation topAnim, bottomAnim;
 
 
     @Override

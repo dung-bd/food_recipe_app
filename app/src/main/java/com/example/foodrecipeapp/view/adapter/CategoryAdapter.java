@@ -1,4 +1,4 @@
-package com.example.foodrecipeapp.adapter;
+package com.example.foodrecipeapp.view.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,8 +42,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
 
     public class CategoryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        TextView categoryName;
-        OnCategoryListener onCategoryListener;
+        private TextView categoryName;
+        private OnCategoryListener onCategoryListener;
 
         public CategoryViewHolder(@NonNull View itemView, OnCategoryListener onCategoryListener) {
             super(itemView);

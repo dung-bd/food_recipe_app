@@ -12,7 +12,7 @@ public class MealApiServices {
     private static MealApiServices INSTANCE;
     private RecipeApi recipeApi;
 
-    int page = 1;
+    private int page = 1;
 
     public MealApiServices() {
         Retrofit retrofit = new Retrofit.Builder()
